@@ -15,9 +15,23 @@ class UsersController < ApplicationController
     end
   end
 
-  def update; end
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      render json: @user, except: %i[created_at updated_at], status: :ok
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
 
-  def destroy; end
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      render json: @user, except: %i[created_at updated_at], status: :ok
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
 
   private
 
