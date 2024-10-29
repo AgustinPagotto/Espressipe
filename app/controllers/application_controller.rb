@@ -24,6 +24,12 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def authorized_current_user
+    unless current_user == User.find(params[:id])
+      render json: { message: 'Please log in' }, status: :unauthorized
+    end
+  end
+
   def authorized
     unless !!current_user
     render json: { message: 'Please log in' }, status: :unauthorized

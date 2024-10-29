@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
-
+  before_action :authorized_current_user, only: %i[update destroy]
 
   def me 
     render json: current_user, status: :ok
