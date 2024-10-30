@@ -19,9 +19,21 @@ class BrewsController < ApplicationController
   end
 
   def update
+    brew = current_user.brews.find(params[:id])
+    if brew.update(brew_params)
+      render json: brew, status: :ok
+    else
+      render json: { errors: brew.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    brew = current_user.brews.find(params[:id])
+    if brew.destroy
+      render json: brew, status: :ok
+    else
+      render json: { errors: brew.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   private
