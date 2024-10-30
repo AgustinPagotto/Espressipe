@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_30_144107) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_30_150601) do
   create_table "brews", force: :cascade do |t|
     t.integer "cofamount"
     t.integer "watamount"
@@ -23,6 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_30_144107) do
     t.integer "ratingtaste"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_brews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,4 +35,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_30_144107) do
     t.string "password_digest"
   end
 
+  add_foreign_key "brews", "users"
 end
