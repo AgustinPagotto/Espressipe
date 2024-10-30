@@ -1,23 +1,19 @@
 michael:
   name: Michael
-  lastname: Example
   email: michael@example.com
   password_digest: <%= User.digest('password')%>
 
 archer:
   name: Sterling
-  lastname: Archer
   email: duchess@example.gov
   password_digest: <%= User.digest('password')%>
 
 lana:
   name: Lana
-  lastname: Kane
   email: hands@example.gov
   password_digest: <%= User.digest('password') %>
 
 malory:
   name: Malory
-  lastname: Archer
   email: boss@example.gov
   password_digest: <%= User.digest('password') %>
