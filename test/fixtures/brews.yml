@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cofamount: 1
+  watamount: 1
+  method: MyString
+  grindsetting: 1
+  temperature: 1
+  date: 2024-10-30
+  extrationtime: 1
+  ratingbrew: 1
+  ratingtaste: 1
+
+two:
+  cofamount: 1
+  watamount: 1
+  method: MyString
+  grindsetting: 1
+  temperature: 1
+  date: 2024-10-30
+  extrationtime: 1
+  ratingbrew: 1
+  ratingtaste: 1
