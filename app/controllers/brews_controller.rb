@@ -39,6 +39,6 @@ class BrewsController < ApplicationController
   private
 
   def brew_params
-    params.permit(:cofamount, :watamount, :method, :grindsetting, :temperature, :date, :extrationtime, :ratingbrew, :ratingtaste)
+    params.permit(:cofamount, :watamount, :method, :grindsetting, :temperature, :date, :extrationtime, :ratingbrew, :brewresult)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_30_150601) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_28_151626) do
   create_table "brews", force: :cascade do |t|
     t.integer "cofamount"
     t.integer "watamount"
@@ -20,10 +20,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_30_150601) do
     t.date "date"
     t.integer "extrationtime"
     t.integer "ratingbrew"
-    t.integer "ratingtaste"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "brewresult"
     t.index ["user_id"], name: "index_brews_on_user_id"
   end
 
