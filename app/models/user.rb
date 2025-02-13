@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :beans, class_name: 'Bean', foreign_key: 'user_id', dependent: :destroy
   has_many :brews, class_name: 'Brew', foreign_key: 'user_id', dependent: :destroy
   before_save :downcase_email
 
