@@ -1,7 +1,6 @@
 class Brew < ApplicationRecord
   belongs_to :bean
 
-  validates :user_id, presence: true
   validates :cofamount, presence: true, numericality: { only_integer: true }
   validates :watamount, presence: true, numericality: { only_integer: true }
   validates :method, presence: true, length: { maximum: 30 }

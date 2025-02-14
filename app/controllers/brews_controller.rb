@@ -10,7 +10,11 @@ class BrewsController < ApplicationController
   end
 
   def create
-    brew = current_user.brews.build(brew_params)
+    bean = current_user.beans.find_by(id: params[:bean_id])
+
+    return render json: { error: 'Bean not found' }, status: :not_found unless bean
+
+    brew = bean.brews.build(brew_params)
     if brew.save
       render json: brew, status: :created
     else
@@ -19,7 +23,7 @@ class BrewsController < ApplicationController
   end
 
   def update
-    brew = current_user.brews.find(params[:id])
+    brew = current_user.beans.find_by(id: params[:bean_id]).brews.find(params[:id])
     if brew.update(brew_params)
       render json: brew, status: :ok
     else
@@ -28,7 +32,7 @@ class BrewsController < ApplicationController
   end
 
   def destroy
-    brew = current_user.brews.find(params[:id])
+    brew = current_user.beans.find_by(id: params[:bean_id]).brews.find(params[:id])
     if brew.destroy
       render json: brew, status: :ok
     else
