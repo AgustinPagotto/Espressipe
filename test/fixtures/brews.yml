@@ -6,10 +6,10 @@ one:
   method: MyString
   grindsetting: 1
   temperature: 1
-  date: 2024-10-30
   extrationtime: 1
   ratingbrew: 1
-  ratingtaste: 1
+  brewresult: 1
+  bean_id: 1
 
 two:
   cofamount: 1
@@ -17,7 +17,7 @@ two:
   method: MyString
   grindsetting: 1
   temperature: 1
-  date: 2024-10-30
   extrationtime: 1
   ratingbrew: 1
-  ratingtaste: 1
+  brewresult: 1
+  bean_id: 2
