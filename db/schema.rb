@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_15_000556) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_16_055222) do
   create_table "beans", force: :cascade do |t|
     t.string "name"
     t.string "origin"
@@ -30,7 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_000556) do
     t.string "method"
     t.float "grindsetting"
     t.integer "temperature"
-    t.date "date"
     t.integer "extrationtime"
     t.integer "ratingbrew"
     t.datetime "created_at", null: false

@@ -15,6 +15,7 @@ class BrewsController < ApplicationController
     return render json: { error: 'Bean not found' }, status: :not_found unless bean
 
     brew = bean.brews.build(brew_params)
+    brew.bean_id = bean.id
     if brew.save
       render json: brew, status: :created
     else
@@ -48,12 +49,13 @@ class BrewsController < ApplicationController
   private
 
   def set_bean
+    debugger
     @bean = current_user.beans.find_by(id: params[:bean_id])
     render json: { error: 'Bean not found' }, status: :not_found unless @bean
   end
 
   def brew_params
-    params.permit(:cofamount, :watamount, :method, :grindsetting, :temperature, :date, :extrationtime, :ratingbrew,
-                  :brewresult, :bean_id)
+    params.permit(:cofamount, :watamount, :method, :grindsetting, :temperature, :extrationtime, :ratingbrew,
+                  :brewresult)
   end
 end
