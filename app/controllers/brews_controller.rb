@@ -23,7 +23,6 @@ class BrewsController < ApplicationController
   end
 
   def update
-    debugger
     brew = @bean.brews.find(params[:id])
     if brew.update(brew_params)
       render json: brew, status: :ok
