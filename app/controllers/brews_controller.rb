@@ -42,14 +42,15 @@ class BrewsController < ApplicationController
   end
 
   def user_brews
-    brews = Brew.joins(:bean).where(beans: { user_id: current_user.id })
+    brews = Brew.joins(:bean)
+                .where(beans: { user_id: current_user.id })
+                .select('brews.*, beans.name AS bean_name') # 👈 Selects bean name
     render json: brews, status: :ok
   end
 
   private
 
   def set_bean
-    debugger
     @bean = current_user.beans.find_by(id: params[:bean_id])
     render json: { error: 'Bean not found' }, status: :not_found unless @bean
   end
