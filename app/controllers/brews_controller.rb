@@ -1,16 +1,16 @@
 class BrewsController < ApplicationController
-  before_action :authorized_current_user, only: %i[update destroy]
+  before_action :set_bean, only: %i[index show create update destroy]
 
   def index
-    render json: current_user.brews, status: :ok
+    render json: @bean.brews, status: :ok
   end
 
   def show
-    render json: current_user.brews.find(params[:id]), status: :ok
+    render json: @bean.brews.find(params[:id]), status: :ok
   end
 
   def create
-    bean = current_user.beans.find_by(id: params[:bean_id])
+    bean = @bean
 
     return render json: { error: 'Bean not found' }, status: :not_found unless bean
 
@@ -23,7 +23,8 @@ class BrewsController < ApplicationController
   end
 
   def update
-    brew = current_user.beans.find_by(id: params[:bean_id]).brews.find(params[:id])
+    debugger
+    brew = @bean.brews.find(params[:id])
     if brew.update(brew_params)
       render json: brew, status: :ok
     else
@@ -32,7 +33,7 @@ class BrewsController < ApplicationController
   end
 
   def destroy
-    brew = current_user.beans.find_by(id: params[:bean_id]).brews.find(params[:id])
+    brew = @bean.brews.find(params[:id])
     if brew.destroy
       render json: brew, status: :ok
     else
@@ -40,7 +41,17 @@ class BrewsController < ApplicationController
     end
   end
 
+  def user_brews
+    brews = Brew.joins(:bean).where(beans: { user_id: current_user.id })
+    render json: brews, status: :ok
+  end
+
   private
+
+  def set_bean
+    @bean = current_user.beans.find_by(id: params[:bean_id])
+    render json: { error: 'Bean not found' }, status: :not_found unless @bean
+  end
 
   def brew_params
     params.permit(:cofamount, :watamount, :method, :grindsetting, :temperature, :date, :extrationtime, :ratingbrew,

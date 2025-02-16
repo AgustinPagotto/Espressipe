@@ -19,3 +19,13 @@ two:
   rating: 1
   decaf: false
   user: michael
+
+three:
+  id: 3
+  name: MyString
+  origin: MyString
+  process: MyString
+  roastlevel: MyString
+  rating: 1
+  decaf: false
+  user: michael

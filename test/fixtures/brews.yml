@@ -21,3 +21,25 @@ two:
   ratingbrew: 1
   brewresult: 1
   bean_id: 2
+
+three:
+  cofamount: 1
+  watamount: 1
+  method: MyString
+  grindsetting: 1
+  temperature: 1
+  extrationtime: 1
+  ratingbrew: 1
+  brewresult: 1
+  bean_id: 2
+
+four:
+  cofamount: 1
+  watamount: 1
+  method: MyString
+  grindsetting: 1
+  temperature: 1
+  extrationtime: 1
+  ratingbrew: 1
+  brewresult: 1
+  bean_id: 3
