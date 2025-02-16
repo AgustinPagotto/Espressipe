@@ -1,5 +1,4 @@
 class BeansController < ApplicationController
-  before_action :authorized_current_user, only: %i[update destroy]
 
   def index
     render json: current_user.beans, status: :ok
