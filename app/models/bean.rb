@@ -7,6 +7,7 @@ class Bean < ApplicationRecord
   validates :origin, presence: true, length: { maximum: 30 }
   validates :process, presence: true, length: { maximum: 30 }
   validates :roastlevel, presence: true, length: { maximum: 30 }
-  validates :rating, numericality: { only_integer: true }, inclusion: { in: 0..5 }, allow_nil: true
+  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 },
+                     allow_nil: true
   validates :decaf, inclusion: { in: [true, false] }
 end

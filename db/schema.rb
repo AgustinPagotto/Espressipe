@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_16_055222) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_06_150943) do
   create_table "beans", force: :cascade do |t|
     t.string "name"
     t.string "origin"
     t.string "process"
     t.string "roastlevel"
-    t.integer "rating"
+    t.float "rating"
     t.boolean "decaf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_16_055222) do
     t.float "grindsetting"
     t.integer "temperature"
     t.integer "extrationtime"
-    t.integer "ratingbrew"
+    t.float "ratingbrew"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
