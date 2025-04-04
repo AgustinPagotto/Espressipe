@@ -1,5 +1,4 @@
 class BeansController < ApplicationController
-
   def index
     render json: current_user.beans, status: :ok
   end
@@ -9,12 +8,21 @@ class BeansController < ApplicationController
   end
 
   def create
-    bean = current_user.beans.build(bean_params)
-    if bean.save
-      render json: bean, status: :created
-    else
-      render json: { errors: bean.errors.full_messages }, status: :unprocessable_entity
-    end
+    builder = BeanBuilder.new
+    bean = builder.set_required_bean_attributes(
+      current_user.id,
+      bean_params[:name],
+      bean_params[:origin],
+      bean_params[:process],
+      bean_params[:roastlevel]
+    )
+                  .log_changes
+    bean.set_rating(bean_params[:rating])
+    bean.set_decaf(bean_params[:decaf])
+    bean = bean.build
+    render json: bean, status: :created
+  rescue ActiveRecord::RecordInvalid => e
+    render json: { error: e.message }, status: :unprocessable_entity
   end
 
   def update
