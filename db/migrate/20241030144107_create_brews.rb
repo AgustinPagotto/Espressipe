@@ -7,7 +7,7 @@ class CreateBrews < ActiveRecord::Migration[7.0]
       t.integer :grindsetting
       t.integer :temperature
       t.date :date
-      t.integer :extrationtime
+      t.integer :extractiontime
       t.integer :ratingbrew
       t.integer :ratingtaste
 

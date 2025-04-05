@@ -6,7 +6,7 @@ one:
   method: MyString
   grindsetting: 1
   temperature: 1
-  extrationtime: 1
+  extractiontime: 1
   ratingbrew: 1
   brewresult: 1
   bean_id: 1
@@ -17,7 +17,7 @@ two:
   method: MyString
   grindsetting: 1
   temperature: 1
-  extrationtime: 1
+  extractiontime: 1
   ratingbrew: 1
   brewresult: 1
   bean_id: 2
@@ -28,7 +28,7 @@ three:
   method: MyString
   grindsetting: 1
   temperature: 1
-  extrationtime: 1
+  extractiontime: 1
   ratingbrew: 1
   brewresult: 1
   bean_id: 2
@@ -39,7 +39,7 @@ four:
   method: MyString
   grindsetting: 1
   temperature: 1
-  extrationtime: 1
+  extractiontime: 1
   ratingbrew: 1
   brewresult: 1
   bean_id: 3

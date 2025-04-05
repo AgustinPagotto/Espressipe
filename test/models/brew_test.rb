@@ -3,7 +3,7 @@ require 'test_helper'
 class BrewTest < ActiveSupport::TestCase
   def setup
     @brew = Brew.new(cofamount: 15, watamount: 200, method: 'espresso', grindsetting: 15.5, temperature: 90,
-                     extrationtime: 30, ratingbrew: 5, brewresult: 150, bean_id: 1)
+                     extractiontime: 30, ratingbrew: 5, brewresult: 150, bean_id: 1)
   end
   test 'brew should be valid' do
     assert @brew.valid?
@@ -43,8 +43,8 @@ class BrewTest < ActiveSupport::TestCase
     assert_not @brew.valid?
   end
 
-  test 'extrationtime should be numerical' do
-    @brew.extrationtime = 'abc'
+  test 'extractiontime should be numerical' do
+    @brew.extractiontime = 'abc'
     assert_not @brew.valid?
   end
 
