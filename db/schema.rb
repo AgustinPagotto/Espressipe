@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_06_150943) do
     t.string "method"
     t.float "grindsetting"
     t.integer "temperature"
-    t.integer "extractiontime"
+    t.integer "extrationtime"
     t.float "ratingbrew"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
