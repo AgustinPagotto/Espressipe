@@ -8,9 +8,16 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @token = encode_token(user_id: @user.id)
     if @user.save
-      render json:{ user: @user, token: @token }, except: %i[created_at updated_at password_digest id], status: :created
+      builder = BeanBuilder.new
+      director = BeanDirector.new(builder)
+      begin
+        director.build_example_bean(@user.id)
+      rescue ActiveRecord::RecordInvalid => e
+        Rails.logger.error("Failed to build bean: #{e.message}")
+        return render json: { user: @user, except: %i[created_at updated_at password_digest id], warning: "User created, but example bean could not be created: #{e.message}" }, status: :created
+      end
+      render json:{ user: @user }, except: %i[created_at updated_at password_digest id], status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
