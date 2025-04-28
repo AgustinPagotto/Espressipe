@@ -2,7 +2,9 @@ class ApplicationController < ActionController::API
   before_action :authorized
 
   def encode_token(payload)
-      JWT.encode(payload, ENV['JWT_SECRET']) 
+    expiration_days = ENV['JWT_EXPIRATION'].to_i || 30
+    payload[:exp] = expiration_days.days.from_now.to_i
+    JWT.encode(payload, ENV['JWT_SECRET'])
   end
 
   def decoded_token
