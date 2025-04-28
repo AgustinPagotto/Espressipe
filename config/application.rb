@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 # Load .env file in development and test environments
 if Rails.env.development? || Rails.env.test?
-  Dotenv::Rails.load
+  Dotenv::Railtie.load
 end
 
 module Espressipe
