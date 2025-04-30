@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_03_06_150943) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_30_144023) do
   create_table "beans", force: :cascade do |t|
     t.string "name"
     t.string "origin"
@@ -25,8 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_06_150943) do
   end
 
   create_table "brews", force: :cascade do |t|
-    t.integer "cofamount"
-    t.integer "watamount"
+    t.float "cofamount"
+    t.float "watamount"
     t.string "method"
     t.float "grindsetting"
     t.integer "temperature"
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_06_150943) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "brewresult"
+    t.float "brewresult"
     t.integer "bean_id", null: false
     t.index ["bean_id"], name: "index_brews_on_bean_id"
     t.index ["user_id"], name: "index_brews_on_user_id"
