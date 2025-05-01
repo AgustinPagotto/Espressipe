@@ -46,6 +46,6 @@ class BeansController < ApplicationController
   private
 
   def bean_params
-    params.permit(:name, :origin, :process, :roastlevel, :rating, :decaf)
+    params.require(:bean_data).permit(:name, :origin, :process, :roastlevel, :rating, :decaf)
   end
 end
