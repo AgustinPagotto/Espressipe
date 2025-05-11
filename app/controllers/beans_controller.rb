@@ -22,7 +22,7 @@ class BeansController < ApplicationController
     bean = bean.build
     render json: bean, status: :created
   rescue ActiveRecord::RecordInvalid => e
-    render json: { error: e.message }, status: :unprocessable_entity
+    render json: { message: e.message }, status: :unprocessable_entity
   end
 
   def update
@@ -30,7 +30,8 @@ class BeansController < ApplicationController
     if bean.update(bean_params)
       render json: bean, status: :ok
     else
-      render json: { errors: bean.errors.full_messages }, status: :unprocessable_entity
+      puts bean.errors.full_messages
+      render json: { message: bean.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -39,7 +40,7 @@ class BeansController < ApplicationController
     if bean.destroy
       render json: bean, status: :ok
     else
-      render json: { errors: bean.errors.full_messages }, status: :unprocessable_entity
+      render json: { message: bean.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

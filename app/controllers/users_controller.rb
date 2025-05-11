@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       end
       render json:{ user: @user }, except: %i[created_at updated_at password_digest id], status: :created
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json:{ message: @user.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       render json: @user, except: %i[created_at updated_at password_digest id], status: :ok
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: { message: @user.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     if @user.destroy
       render json: @user, except: %i[created_at updated_at], status: :ok
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: { message: @user.errors.full_messages}, status: :unprocessable_entity
     end
   end
 

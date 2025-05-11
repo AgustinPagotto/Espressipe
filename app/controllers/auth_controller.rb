@@ -8,7 +8,7 @@ class AuthController < ApplicationController
             @token = encode_token(user_id: @user.id)
             render json:{ user: @user, token: @token }, except: %i[created_at updated_at password_digest id], status: :accepted
         else
-            render json: {message: 'Incorrect password'}, status: :unauthorized
+            render json: { message: 'Incorrect password' }, status: :unauthorized
         end
     end
 

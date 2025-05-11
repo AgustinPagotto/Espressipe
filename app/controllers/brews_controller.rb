@@ -12,14 +12,14 @@ class BrewsController < ApplicationController
   def create
     bean = @bean
 
-    return render json: { error: 'Bean not found' }, status: :not_found unless bean
+    return render json: { message: 'Bean not found' }, status: :not_found unless bean
 
     brew = bean.brews.build(brew_params)
     brew.bean_id = bean.id
     if brew.save
       render json: brew, status: :created
     else
-      render json: { errors: brew.errors.full_messages }, status: :unprocessable_entity
+      render json: { message: brew.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class BrewsController < ApplicationController
     if brew.update(brew_params)
       render json: brew, status: :ok
     else
-      render json: { errors: brew.errors.full_messages }, status: :unprocessable_entity
+      render json: { message: brew.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -37,14 +37,14 @@ class BrewsController < ApplicationController
     if brew.destroy
       render json: brew, status: :ok
     else
-      render json: { errors: brew.errors.full_messages }, status: :unprocessable_entity
+      render json: { message: brew.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def user_brews
     brews = Brew.joins(:bean)
                 .where(beans: { user_id: current_user.id })
-                .select('brews.*, beans.name AS bean_name') # 👈 Selects bean name
+                .select('brews.*, beans.name AS bean_name')
     render json: brews, status: :ok
   end
 
@@ -52,7 +52,7 @@ class BrewsController < ApplicationController
 
   def set_bean
     @bean = current_user.beans.find_by(id: params[:bean_id])
-    render json: { error: 'Bean not found' }, status: :not_found unless @bean
+    render json: { message: 'Bean not found' }, status: :not_found unless @bean
   end
 
   def brew_params
